@@ -4,8 +4,8 @@ import numpy as np
 from scipy import signal, optimize
 
 
-def gen_signal(size, bits, lsb, fs, f1, harmonics=10, h1=0.95, h2=0.02, attenuation=0.90, noise=0.02, offset=0.02,
-               bipolarity=True):
+def gen_signal(size, bits, lsb, fs, f1, harmonics=10, h1=0.95, h2=0.02,
+               attenuation=0.90, noise=0.02, offset=0.02, bipolarity=True):
     """Generates digitized signal data
     size - number of digitized samples (signal length)
     bits - number of ADC bits
@@ -28,7 +28,8 @@ def gen_signal(size, bits, lsb, fs, f1, harmonics=10, h1=0.95, h2=0.02, attenuat
     a1 = h1 * fsr / 2
     a2 = h2 * fsr / 2
     if harmonics >= 2:
-        an = np.append(np.array(a1, 'float64'), a2 * (attenuation ** np.arange(harmonics-1)))
+        an = np.append(np.array(a1, 'float64'),
+                       a2 * (attenuation ** np.arange(harmonics-1)))
     elif harmonics >= 1:
         an = np.array(a1, 'float64')
     else:
